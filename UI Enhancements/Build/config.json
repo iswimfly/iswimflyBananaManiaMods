@@ -1,0 +1,27 @@
+{
+  "PauseMenuChanges": {
+    "Value": true,
+    "Description": "If true, the pause menu will move all buttons to the right, remove the yellow background, and remove the character portrait.",
+    "Category": "Universal"
+  },
+  "RunInBackground":{
+    "Value": true,
+    "Description" :"If true, the game will continue to play audio when out of focus (Alt-tabbed, Pressing the Windows button, etc).",
+    "Category": "Universal"
+  },
+  "RankingChallengeMoveTimer":{
+    "Value": true,
+    "Description": "If set to false, the Ranking Challenge timer will remain in the original location. If true, it will use the coordinates set below.",
+    "Category": "Ranking Challenge Timer"
+    },
+  "RankingChallengePositionX": {
+    "Value": 365,
+    "Description": "Changes the X Position of the Ranking Challenge Timer. Can be adjusted, but 365 is recommended. 0 is default.",
+    "Category": "Ranking Challenge Timer"
+    },
+  "RankingChallengePositionY": {
+    "Value": 860,
+    "Description": "Changes the Y Position of the Ranking Challenge Timer. Can be adjusted, but 860 is recommended. 0 is default.",
+    "Category": "Ranking Challenge Timer"
+    }
+  }

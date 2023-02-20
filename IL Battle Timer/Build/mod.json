@@ -1,0 +1,11 @@
+{
+    "Title": "Individual Level Battle Timer",
+    "Id": "iswimfly.ILBattle",
+    "DLLFile": "ILBattleTimer.dll",
+    "Description": "A mod that adds an IL Battle Time to Practice Mode! Use plus and minus to add/subtract time, and Backspace to toggle Perfect Clears! Left Shift starts a battle, and Tab cancels the current battle.",
+    "Version": "1.0",
+    "Date": "2/20/2022",
+    "Author": "iswimfly",
+    "AuthorURL": "twitch.tv/iswimfly556",
+    "UpdateServer": ""
+  }

@@ -1,0 +1,11 @@
+{
+    "Title": "UI Enhancements",
+    "Id": "iswimfly.HUD",
+    "DLLFile": "UI Enhancements.dll",
+    "Description": "A mod that changes the HUD with some quality of life enhancements.'",
+    "Version": "0.1",
+    "Date": "5/31/2022",
+    "Author": "iswimfly",
+    "AuthorURL": "twitch.tv/iswimfly556",
+    "UpdateServer": ""
+  }
