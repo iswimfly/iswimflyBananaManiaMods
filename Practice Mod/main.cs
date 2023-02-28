@@ -17,7 +17,11 @@ namespace PracticeMod
 
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                playercamera = GameObject.Find("GameCamera(Clone)");
+                playercamera = GameObject.Find("ObjRoot").transform.GetChild(5).gameObject;
+                if (playercamera.name == "GameCameraShimmer(Clone)")
+                {
+                    playercamera = GameObject.Find("CameraMain");
+                }
                 pausemenu = FindObjectOfType<Pause>().gameObject;
                 player = GameObject.Find("Player(Clone)");
                 maingame = FindObjectOfType<MainGame>().gameObject;
