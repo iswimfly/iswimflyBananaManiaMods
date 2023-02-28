@@ -1,32 +1,31 @@
 ﻿using UnityEngine;
-using Console = System.Console;
 using Flash2;
+using Framework.UI;
 
-namespace FixingOGLongTorus
+namespace PracticeMod
 {
 
     public class Main : MonoBehaviour
     {
-        private static GameObject Timer = null;
+        private static GameObject maingame = null;
+        private static GameObject pausemenu = null;
+        private static GameObject player = null;
+        private static GameObject playercamera = null;
         public static void OnModUpdate()
         {
-            if (MainGame.Exists == true)
+            if (MainGame.Exists != true) return;
+
+            if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                if (Timer != null)
+                playercamera = GameObject.Find("GameCamera(Clone)");
+                pausemenu = FindObjectOfType<Pause>().gameObject;
+                player = GameObject.Find("Player(Clone)");
+                maingame = FindObjectOfType<MainGame>().gameObject;
+
+                if (playercamera.GetComponent<Camera>().isActiveAndEnabled && pausemenu.GetComponent<Pause>().currentPlayerIndex != 0 && maingame != null && player != null)
                 {
-                    if (Timer.transform.GetComponent<MainGameStage>().m_GameTimer == 3600)
-                    {
-                        Console.WriteLine(Timer.transform.GetComponent<MainGameStage>().m_StateFrame);
-                    }
+                    maingame.transform.GetComponent<MainGame>().m_isRequestRecreateStage = true;
                 }
-                else
-                {
-                    Timer = FindObjectOfType<MainGameStage>().gameObject;
-                }
-            }
-            else
-            {
-                FranciscoDestroyed = false;
             }
         }
     }
