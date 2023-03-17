@@ -1,7 +1,5 @@
 # BM-UI-Enhancements
 
-This mod requires [`Banana Mod Manager`](https://github.com/MorsGames/BananaModManager).
-
 UI Enhancements adds a few minor HUD Tweaks and quality of life changes to Super Monkey Ball Banana Mania!
 
 Current Features include:
