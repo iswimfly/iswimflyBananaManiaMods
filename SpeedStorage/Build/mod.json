@@ -1,0 +1,11 @@
+{
+    "Title": "Speed Storage",
+    "Id": "iswimfly.SpeedStorage",
+    "DLLFile": "SpeedStorage.dll",
+    "Description": "Upon completing a level in a category, your velocity will be stored and applied to the ball at the start of the next level. Play carefully!",
+    "Version": "1.0",
+    "Date": "2/20/2022",
+    "Author": "iswimfly",
+    "AuthorURL": "twitch.tv/iswimfly556",
+    "UpdateServer": ""
+  }
