@@ -18,6 +18,7 @@ namespace LimyReq
             if (Input.GetKeyDown(KeyCode.Delete))
             {
                 storedSpeed = Vector3.zero;
+                goaldone = false;
                 Sound.PlayOneShot(sound_id.cue.se_com_cancel);
             }
 
