@@ -1,10 +1,10 @@
 {
-    "Title": "Fix OG Long Torus",
+    "Title": "Collision Fixes",
     "Id": "iswimfly.Francis",
     "DLLFile": "CollisionFixes.dll",
-    "Description": "A mod that removes Francis (OG Long Torus's Cube) and Francisco (Double Spiral's Wormhole) from the game.'",
-    "Version": "1.0",
-    "Date": "10/19/2022",
+    "Description": "A mod that fixes the collision of several stages in the game.",
+    "Version": "1.1",
+    "Date": "3/25/2023",
     "Author": "iswimfly",
     "AuthorURL": "twitch.tv/iswimfly556",
     "UpdateServer": ""
