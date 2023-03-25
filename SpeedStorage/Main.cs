@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Flash2;
+﻿using Flash2;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Unity.Mathematics;
 
 namespace LimyReq
 {
     public class Main : MonoBehaviour
     {
+
         private static GameObject mainGameController;
         private static GameObject thePlayer;
         private static bool goaldone;
@@ -18,22 +14,35 @@ namespace LimyReq
 
         public static void OnModUpdate()
         {
-            if (SceneManager.GetActiveScene().name == "MainMenu")
+            // If delete is pressed, clear the stored speed.
+            if (Input.GetKeyDown(KeyCode.Delete))
             {
-                storedSpeed = new Vector3(0, 0, 0);
+                storedSpeed = Vector3.zero;
+                Sound.PlayOneShot(sound_id.cue.se_com_cancel);
             }
+
+            // Only run the code below if maingame exists and the player exists
             if (MainGame.Exists != true) return;
             if (FindObjectOfType<Player>() == null) return;
-            // MainGameStage
+
+            // Grabs the Main Game controller for later use
             mainGameController = FindObjectOfType<MainGameStage>().gameObject;
-            // PlayerBall
+            // Grabs the Player for physics control later
             thePlayer = FindObjectOfType<Player>().gameObject;
-            if (thePlayer.GetComponent<MainGamePlayerBall>().m_Flags == Flash2.PhysicsBall.Flags.M_BALL_GROUND_ON && goaldone == true)
+
+            // If the player spawns in with stored speed, apply it once.
+            if (thePlayer.GetComponent<MainGamePlayerBall>().m_Flags == Flash2.PhysicsBall.Flags.M_BALL_GROUND_ON
+                && goaldone == true 
+                && storedSpeed != Vector3.zero
+                && mainGameController.GetComponent<MainGameStage>().m_State != MainGameStage.State.GOAL)
             {
                 thePlayer.GetComponent<MainGamePlayerBall>().m_Velocity = storedSpeed;
                 goaldone = false;
             }
-            if (mainGameController.GetComponent<MainGameStage>().m_State == MainGameStage.State.GOAL && goaldone != true)
+
+            // If the player completes a stage, store their speed and lock out from storing it multiple times
+            if (mainGameController.GetComponent<MainGameStage>().m_State == MainGameStage.State.GOAL 
+                && goaldone != true)
             {
                 goaldone = true;
                 storedSpeed = thePlayer.GetComponent<MainGamePlayerBall>().m_Velocity;
