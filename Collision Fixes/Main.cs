@@ -18,62 +18,53 @@ namespace FixingOGLongTorus
             }
             // Only attempt stage fixes if the Main Game is being played
             if (FindObjectOfType<MainGameStage>() == null) return;
-            try
+            if (ObjectDestroyed) return;
+
+            switch (FindObjectOfType<MainGameStage>().m_StageIndex)
             {
                 // OG Long Torus
-                if (FindObjectOfType<MainGameStage>().m_StageIndex == 2327 && ObjectDestroyed == false)
-                {
+                case 2327:
                     Object = GameObject.Find("col2");
                     Destroy(Object);
                     ObjectDestroyed = true;
-                }
+                    break;
                 // Double Spiral
-                if (FindObjectOfType<MainGameStage>().m_StageIndex == 2287 && ObjectDestroyed == false)
-                {
+                case 2287:
                     Object = GameObject.Find("col5");
                     Destroy(Object);
                     ObjectDestroyed = true;
-                }
-                // Swing Shaft (Story)
-                if (FindObjectOfType<MainGameStage>().m_StageIndex == 2057 && ObjectDestroyed == false)
-                {
+                    break;
+                // Swing Shaft
+                case 2057:
                     Object = GameObject.Find("col7");
                     Destroy(Object);
                     ObjectDestroyed = true;
-                }
+                    break;
                 // Swing Shaft (SMB2 Expert)
-                if (FindObjectOfType<MainGameStage>().m_StageIndex == 2057 && ObjectDestroyed == false)
-                {
+                case 2299:
                     Object = GameObject.Find("col7");
                     Destroy(Object);
                     ObjectDestroyed = true;
-                }
+                    break;
                 // Linear Seesaws (Story)
-                if (FindObjectOfType<MainGameStage>().m_StageIndex == 2058 && ObjectDestroyed == false)
-                {
+                case 2058:
                     GameObject.Find("Collision").gameObject.transform.Find("SEESAW_1_1_1Z1Z").transform.localPosition = new Vector3(0f, -0.06f, GameObject.Find("Collision").gameObject.transform.GetChild(5).localPosition.z);
                     GameObject.Find("Collision").gameObject.transform.Find("SEESAW_1_1_1Z2Z").transform.localPosition = new Vector3(0f, -0.06f, GameObject.Find("Collision").gameObject.transform.GetChild(6).localPosition.z);
                     GameObject.Find("Collision").gameObject.transform.Find("SEESAW_1_1_1Z3Z").transform.localPosition = new Vector3(0f, -0.06f, GameObject.Find("Collision").gameObject.transform.GetChild(7).localPosition.z);
-                    ObjectDestroyed = true;                                                                           
-                }   
+                    ObjectDestroyed = true;
+                    break;
                 // Linear Seesaws (SMB2 Casual)
-                if (FindObjectOfType<MainGameStage>().m_StageIndex == 2219 && ObjectDestroyed == false)               
-                {
+                case 2219:
                     GameObject.Find("Collision").gameObject.transform.Find("SEESAW_1_1_1Z1Z").transform.localPosition = new Vector3(0f, -0.06f, GameObject.Find("Collision").gameObject.transform.GetChild(5).localPosition.z);
                     GameObject.Find("Collision").gameObject.transform.Find("SEESAW_1_1_1Z2Z").transform.localPosition = new Vector3(0f, -0.06f, GameObject.Find("Collision").gameObject.transform.GetChild(6).localPosition.z);
                     GameObject.Find("Collision").gameObject.transform.Find("SEESAW_1_1_1Z3Z").transform.localPosition = new Vector3(0f, -0.06f, GameObject.Find("Collision").gameObject.transform.GetChild(7).localPosition.z);
-                    ObjectDestroyed = true;                                                                           
-                }    
+                    ObjectDestroyed = true;
+                    break;
                 // 8 Seesaws
-                if (FindObjectOfType<MainGameStage>().m_StageIndex == 2336 && ObjectDestroyed == false)               
-                {
+                case 2336:
                     GameObject.Find("Collision").gameObject.transform.Find("SEESAW_1_1_1Z1").transform.localPosition = new Vector3(0f, -0.26f, GameObject.Find("Collision").gameObject.transform.GetChild(4).localPosition.z);
                     ObjectDestroyed = true;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
+                    break;
             }
         }
     }
