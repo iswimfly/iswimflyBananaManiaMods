@@ -1,0 +1,11 @@
+{
+    "Title": "Monkey Replacer",
+    "Id": "iswimfly.Monkey",
+    "DLLFile": "Monkey Replacer.dll",
+    "Description": "Replace a Monkey with a different Monkey! Check the readme for instructions about variables.",
+    "Version": "1.0",
+    "Date": "4/26/2023",
+    "Author": "iswimfly",
+    "AuthorURL": "twitch.tv/iswimfly556",
+    "UpdateServer": ""
+  }

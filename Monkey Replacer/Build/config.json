@@ -1,0 +1,10 @@
+{
+    "MonkeyToReplace": {
+        "Value": 100,
+        "Description": "The Monkey being replaced by your choice of monkey."
+      },
+      "CustomMonkey":{
+        "Value": 100,
+        "Description" :"The Monkey you are putting in place of the MonkeyToReplace."
+      }
+}
