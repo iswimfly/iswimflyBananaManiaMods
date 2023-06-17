@@ -1,0 +1,17 @@
+{
+    "Sonic" : {
+        "Value" : "92",
+        "Description" : "The number of the ball you want Sonic to use. Check the README if you're confused.",
+        "Category" : "Characters"
+    },
+    "Tails": {
+        "Value" : "93",
+        "Description" : "he number of the ball you want Tails to use. Check the README if you're confused.",
+        "Category" : "Characters"
+    },
+    "Other": {
+        "Value" : "0",
+        "Description" : "he number of the ball you want every other character to use. Check the README if you're confused.",
+        "Category" : "Characters"
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "Title": "Guest Character Voice Pack Multiplayer Fix",
+  "Id": "bm.snowman.guestcharacterMPFix",
+  "DLLFile": "GuestCharactersMultiplayer.dll",
+  "Description": "A mod that adds voices to guest characters",
+  "Version": "1.0.0",
+  "Date": "10/23/2021",
+  "Author": "Dead Line, Snowman",
+  "AuthorURL": "",
+  "UpdateServer": ""
+}

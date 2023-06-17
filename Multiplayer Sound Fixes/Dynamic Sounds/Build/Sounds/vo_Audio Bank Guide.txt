@@ -1,0 +1,21 @@
+Copy and rename "vo_blank" to "vo_<character you want to use>" and place them in the related type folder
+
+Sound names to replace (I know these could be organzied better but I'm already in too deep...)
+Impact Voicelines:
+
+- light: "goal_fly"
+- medium: "hanauta"
+- hard: "thankyou"
+
+Banana Pickup Voicelines:
+
+- 1 nana: "fallout"
+- 10 banas: "timeover"
+
+Misc Voicelines:
+
+- start: "start"
+- fallout: "happy"
+- goal: "continue_unselect"
+- goal fly: "yabai_long"
+- unbalanced: "happy_long"

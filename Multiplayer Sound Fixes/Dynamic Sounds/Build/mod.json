@@ -1,0 +1,11 @@
+{
+  "Title": "Dynamic Sounds Multiplayer Fix",
+  "Id": "bm.snowman.dynamicrollpluss",
+  "DLLFile": "DynamicSoundsPlusMultiplayer.dll",
+  "Description": "A mod that changes ball rolling sounds based on speed, with impact and monkey sounds",
+  "Version": "2.1.0",
+  "Date": "10/18/2021",
+  "Author": "Snowman",
+  "AuthorURL": "https://github.com/MilesBradt",
+  "UpdateServer": ""
+}
