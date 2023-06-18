@@ -17,7 +17,7 @@ namespace ILBattleTimer
         private static GameObject mainGameController;
         private static float minutes = 0;
 
-        
+
 
         public static void OnModUpdate()
         {
@@ -90,6 +90,7 @@ namespace ILBattleTimer
                     // Get the Goal Time
                     if (mainGameController.GetComponent<MainGameStage>().m_State == MainGameStage.State.GOAL)
                     {
+                        if (bestTime > mainGameController.GetComponent<MainGameStage>().m_GameTimer) return;
                         // Check if it's a Perfect IL Battle
                         if (PerfectBattle == true)
                         {
@@ -121,7 +122,7 @@ namespace ILBattleTimer
                     }
                 }
             }
-            else 
+            else
             {
                 minutes = 0;
                 frameCount = 0;
