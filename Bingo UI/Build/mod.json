@@ -1,0 +1,11 @@
+{
+    "Title": "Bingo UI",
+    "Id": "iswimfly.Bingo",
+    "DLLFile": "BingoUI.dll",
+    "Description": "A mod that adds a stage completion log for Banana Mania Bingo, as well as collective goal counters! REQUIRES BMONLINE TO FUNCTION!!!",
+    "Version": "1.0",
+    "Date": "7/21/2022",
+    "Author": "iswimfly",
+    "AuthorURL": "twitch.tv/iswimfly556",
+    "UpdateServer": ""
+  }

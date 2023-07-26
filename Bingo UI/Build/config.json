@@ -1,0 +1,10 @@
+{
+    "ShowLog": {
+        "Value": true,
+        "Description": "Show the large window that details everyone's character, name, stage cleared, and bingo details."
+    },
+    "ShowCounters": {
+        "Value": true,
+        "Description": "Show the counters on the left side of the game that track bingo stats."
+    }
+}

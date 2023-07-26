@@ -1,0 +1,98 @@
+ManifestFileVersion: 0
+CRC: 1162682567
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 04a52283fbeb2dccaad41d11ecf35a02
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9fb3ca03f3f2cc68a9787e4ede4937bf
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/IconPrefabs/segasaturn.prefab
+- Assets/IconPrefabs/yanyan.prefab
+- Assets/Icons/gongon.png
+- Assets/Icons/dlc03.png
+- Assets/Icons/il_switch.png
+- Assets/IconPrefabs/tails.prefab
+- Assets/Icons/jam.png
+- Assets/Icons/beat.png
+- Assets/BingoLog.prefab
+- Assets/Icons/dlc01.png
+- Assets/Icons/dreamcast.png
+- Assets/IconPrefabs/gongon.prefab
+- Assets/IconPrefabs/aiai.prefab
+- Assets/Icons/kiryu.png
+- Assets/IconPrefabs/dlc01.prefab
+- Assets/IconPrefabs/kiryu.prefab
+- Assets/IconPrefabs/jet.prefab
+- Assets/IconPrefabs/sonic.prefab
+- Assets/Icons/meemee.png
+- Assets/Icons/doctor.png
+- Assets/IconPrefabs/beat.prefab
+- Assets/Icons/segasaturn.png
+- Assets/Icons/gamegear.png
+- Assets/IconPrefabs/jam.prefab
+- Assets/Icons/il_switchfast.png
+- Assets/IconPrefabs/dlc02.prefab
+- Assets/IconPrefabs/dlc03.prefab
+- Assets/Icons/jet.png
+- Assets/Icons/babyrobo.png
+- Assets/Icons/yanyan.png
+- Assets/IconPrefabs/meemee.prefab
+- Assets/Icons/sonic.png
+- Assets/Icons/il_goalbonus.png
+- Assets/IconPrefabs/gamegear.prefab
+- Assets/Message.prefab
+- Assets/Icons/aiai.png
+- Assets/Icons/tails.png
+- Assets/IconPrefabs/doctor.prefab
+- Assets/Icons/il_bananas120.png
+- Assets/BingoCounters.prefab
+- Assets/IconPrefabs/baby.prefab
+- Assets/IconPrefabs/dreamcast.prefab
+- Assets/Icons/dlc02.png
+- Assets/Icons/baby.png
+Dependencies: []
