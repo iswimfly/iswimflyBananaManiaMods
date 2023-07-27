@@ -17,7 +17,7 @@ namespace BingoUI
     public class Message
     {
         private float xCoord { get; set; }
-        private GameObject message { get; set; } 
+        public GameObject message { get; set; } 
         public RectTransform rectTransform { get; set; }
         public float TimeElapsed { get; set; } = 0;
         public Message(string charaKind, string playerName, int goalType, string stage, bool switchStorage, bool fastForward, bool bonusGoal, bool banana50, bool banana100, bool banana120, bool perfectClear, AssetBundle assetBundle, GameObject BingoLog)
@@ -99,15 +99,25 @@ namespace BingoUI
     public class Counters
     {
         public int perfectClears = 0;
+        public List<int> perfectClearStages = new List<int>();
         public int switchStorages = 0;
+        public List<int> switchStorageStages = new List<int>();
         public int fastForwards = 0;
+        public List<int> fastForwardStages = new List<int>();
         public int greenGoals = 0;
+        public List<int> greenGoalStages = new List<int>();
         public int redGoals = 0;
+        public List<int> redGoalStages = new List<int>();
         public int bonusGoals = 0;
+        public List<int> bonusGoalStages = new List<int>();
         public int bonusPerfects = 0;
+        public List<int> bonusPerfectStages = new List<int>();
         public int banana50 = 0;
+        public List<int> banana50Stages = new List<int>();
         public int banana100 = 0;
+        public List<int> banana100Stages = new List<int>();
         public int banana120 = 0;
+        public List<int> banana120Stages = new List<int>();
     }
 
     public class PacketData : IAddonRequestPacket
@@ -294,23 +304,32 @@ namespace BingoUI
                 // Reset Counters
                 Console.WriteLine("Reset Counters!");
                 bingoCounters.greenGoals = 0;
+                bingoCounters.greenGoalStages.Clear();
                 bingoCounters.redGoals = 0;
+                bingoCounters.redGoalStages.Clear();
                 bingoCounters.perfectClears = 0;
+                bingoCounters.perfectClearStages.Clear();
                 bingoCounters.fastForwards = 0;
+                bingoCounters.fastForwardStages.Clear();
                 bingoCounters.switchStorages = 0;
+                bingoCounters.switchStorageStages.Clear();
                 bingoCounters.bonusGoals = 0;
+                bingoCounters.bonusGoalStages.Clear();
                 bingoCounters.bonusPerfects = 0;
+                bingoCounters.bonusPerfectStages.Clear();
                 bingoCounters.banana50 = 0;
+                bingoCounters.banana50Stages.Clear();
                 bingoCounters.banana100 = 0;
+                bingoCounters.banana100Stages.Clear();
                 bingoCounters.banana120 = 0;
+                bingoCounters.banana120Stages.Clear();
                 UpdateCounters();
                 playerPacketData.Reset();
-                int childCount = messageList.childCount;
-                while (childCount > 0)
+                foreach(Message message in messages)
                 {
-                    UnityEngine.GameObject.Destroy(messageList.GetChild(0).gameObject);
-                    childCount--;
+                    UnityEngine.Object.Destroy(message.message);
                 }
+                messages.Clear();
             }
             if (Input.GetKeyDown(KeyCode.F10))
             {
@@ -343,7 +362,7 @@ namespace BingoUI
                 if (mainGameStage.GetPlayer() != null)
                 {
                     Player player = mainGameStage.GetPlayer();
-                    
+                    int stageID = mainGameStage.stageIndex;
                     // Perfect Stage
                     if (mainGameStage.isPerfect && perfectStage != true)
                     {
@@ -382,14 +401,22 @@ namespace BingoUI
                                 break;
                             // Green Goal
                             case MainGameDef.eGoalKind.Green:
-                                bingoCounters.greenGoals++;
                                 playerPacketData.goaltype = 1;
+                                if (!bingoCounters.greenGoalStages.Contains(stageID))
+                                {
+                                    bingoCounters.greenGoals++;
+                                    bingoCounters.greenGoalStages.Add(stageID);
+                                }
                                 sentInfo = true;
                                 break;
                             // Red Goal
                             case MainGameDef.eGoalKind.Red:
-                                bingoCounters.redGoals++;
                                 playerPacketData.goaltype = 2;
+                                if (!bingoCounters.redGoalStages.Contains(stageID))
+                                {
+                                    bingoCounters.redGoals++;
+                                    bingoCounters.redGoalStages.Add(stageID);
+                                }
                                 sentInfo = true;
                                 break;
                             // Catch for invalids (fallouts)
@@ -409,33 +436,53 @@ namespace BingoUI
                             if (mainGameStage.gameObject.GetComponent<MgStageSwitchManager>().currentState == MainGameDef.StageAnimation.eState.FastForward || mainGameStage.gameObject.GetComponent<MgStageSwitchManager>().currentState == MainGameDef.StageAnimation.eState.FastRewind)
                             {
                                 playerPacketData.fastForward = 1;
-                                bingoCounters.fastForwards++;
+                                if (!bingoCounters.fastForwardStages.Contains(stageID))
+                                {
+                                    bingoCounters.fastForwards++;
+                                    bingoCounters.fastForwardStages.Add(stageID);
+                                }
                             }
                         }
                         // Switch Storage
                         if (switchStorage)
                         {
                             playerPacketData.switchStorage = 1;
-                            bingoCounters.switchStorages++;
+                            if (!bingoCounters.switchStorageStages.Contains(stageID))
+                            {
+                                bingoCounters.switchStorages++;
+                                bingoCounters.switchStorageStages.Add(stageID);
+                            }
                         }
                         // Perfect Clear
                         if (perfectStage)
                         {
                             playerPacketData.perfectClear = 1;
-                            bingoCounters.perfectClears++;
+                            if (!bingoCounters.perfectClearStages.Contains(stageID))
+                            {
+                                bingoCounters.perfectClears++;
+                                bingoCounters.perfectClearStages.Add(stageID);
+                            }
                         }
                         // 50 Count
                         if (mainGameStage.m_HarvestedBananaCount >= 50)
                         {
                             playerPacketData.banana50 = 1;
-                            bingoCounters.banana50++;
+                            if (!bingoCounters.banana50Stages.Contains(stageID))
+                            {
+                                bingoCounters.banana50++;
+                                bingoCounters.banana50Stages.Add(stageID);
+                            }
                         }
                         // 100 Count, Reset 50
                         if (mainGameStage.m_HarvestedBananaCount >= 100)
                         {
                             playerPacketData.banana50 = 0;
                             playerPacketData.banana100 = 1;
-                            bingoCounters.banana100++;
+                            if (!bingoCounters.banana100Stages.Contains(stageID))
+                            {
+                                bingoCounters.banana100++;
+                                bingoCounters.banana100Stages.Add(stageID);
+                            }
                         }
                         // 120 Count, Reset 50 & 100
                         if (mainGameStage.m_HarvestedBananaCount >= 120)
@@ -443,7 +490,11 @@ namespace BingoUI
                             playerPacketData.banana50 = 0;
                             playerPacketData.banana100 = 0;
                             playerPacketData.banana120 = 1;
-                            bingoCounters.banana120++;
+                            if (!bingoCounters.banana120Stages.Contains(stageID))
+                            {
+                                bingoCounters.banana120++;
+                                bingoCounters.banana120Stages.Add(stageID);
+                            }
                         }
                         // Bonus Goal
                         if (eBananaCounter == MainGameUI.eBananaCounterKind.Bonus)
@@ -451,13 +502,21 @@ namespace BingoUI
                             if (player.goalKind != MainGameDef.eGoalKind.Invalid || player.goalKind == MainGameDef.eGoalKind.Invalid && mainGameStage.isPerfect)
                             {
                                 playerPacketData.bonusGoal = 1;
-                                bingoCounters.bonusGoals++;
+                                if (!bingoCounters.bonusGoalStages.Contains(stageID))
+                                {
+                                    bingoCounters.bonusGoals++;
+                                    bingoCounters.bonusGoalStages.Add(stageID);
+                                }
                             }
                         }
                         // Bonus Perfect
                         if (eBananaCounter == MainGameUI.eBananaCounterKind.Bonus && perfectStage)
                         {
-                            bingoCounters.bonusPerfects++;
+                            if (!bingoCounters.bonusPerfectStages.Contains(stageID))
+                            {
+                                bingoCounters.bonusPerfects++;
+                                bingoCounters.bonusPerfectStages.Add(stageID);
+                            }
                         }
                         UpdateCounters();
                         string stageName = Framework.Text.TextManager.GetText(GameParam.language, $"stagename_st{mainGameStage.stageIndex}", new UnhollowerBaseLib.Il2CppReferenceArray<Il2CppSystem.Object>(Array.Empty<Il2CppSystem.Object>()));
