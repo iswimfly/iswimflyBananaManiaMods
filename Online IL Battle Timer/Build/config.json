@@ -1,0 +1,6 @@
+{
+    "ShowLog": {
+        "Value": true,
+        "Description": "Show the large window that details everyone's character, name, stage cleared, and bingo details."
+    }
+}

@@ -1,0 +1,83 @@
+ManifestFileVersion: 0
+CRC: 2939912935
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6cc8121fe6c35e0096ff665d5f654565
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 449be1b285e0688ddbdcfeb1a415a02e
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Icons/baby.png
+- Assets/Icons/il_perfect.png
+- Assets/Icons/gamegear.png
+- Assets/Icons/gongon.png
+- Assets/Icons/dlc03.png
+- Assets/Icons/il_switchfast.png
+- Assets/Icons/il_goalred.png
+- Assets/Icons/il_switch.png
+- Assets/Icons/jet.png
+- Assets/Icons/jam.png
+- Assets/Icons/beat.png
+- Assets/Icons/il_bananas100.png
+- Assets/Icons/babyrobo.png
+- Assets/Icons/yanyan.png
+- Assets/Icons/sonic.png
+- Assets/Icons/chequered-flag-microsoft.png
+- Assets/Icons/il_goalbonus.png
+- Assets/Icons/il_goalblue.png
+- Assets/Icons/dlc01.png
+- Assets/Icons/dreamcast.png
+- Assets/Icons/il_goalgreen.png
+- Assets/Message.prefab
+- Assets/Icons/il_bonusperfects.png
+- Assets/Icons/kiryu.png
+- Assets/IlBattleTimerLog.prefab
+- Assets/Icons/tails.png
+- Assets/Icons/aiai.png
+- Assets/Icons/il_bananas120.png
+- Assets/Icons/il_bananas50.png
+- Assets/Icons/meemee.png
+- Assets/Icons/doctor.png
+- Assets/Icons/dlc02.png
+- Assets/Icons/segasaturn.png
+Dependencies: []

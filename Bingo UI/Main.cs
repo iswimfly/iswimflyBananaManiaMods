@@ -201,12 +201,13 @@ namespace BingoUI
         private static PacketData dataToSend;
         private static bool showCounters = true;
         private static bool showLog = true;
+        private static bool screenSide = true;
         private static List<Message> messages = new List<Message>();
         public static void OnModLoad(Dictionary<string, object> settings)
         {
             // BMM Config
             showCounters = (bool)settings["ShowCounters"];
-            showLog = (bool)settings["ShowCounters"];
+            showLog = (bool)settings["ShowLog"];
 
             // Set up API for BMOnline
             api = BMOnline.Mod.Main.Api;
@@ -218,7 +219,14 @@ namespace BingoUI
                 string stageName = Framework.Text.TextManager.GetText(GameParam.language, $"stagename_st{packet.stageID}", new UnhollowerBaseLib.Il2CppReferenceArray<Il2CppSystem.Object>(Array.Empty<Il2CppSystem.Object>()));
                 stageName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(stageName.ToLower());
                 if(!showLog) return;
-                messages.Add(new Message(player.SelectedCharacter.m_CharaKind.ToString(), player.Name, packet.goaltype, stageName, Convert.ToBoolean(packet.switchStorage), Convert.ToBoolean(packet.fastForward), Convert.ToBoolean(packet.bonusGoal), Convert.ToBoolean(packet.banana50), Convert.ToBoolean(packet.banana100), Convert.ToBoolean(packet.banana120), Convert.ToBoolean(packet.perfectClear), assetBundle, BingoLog));
+                if (player.SelectedCharacter.m_CharaKind == Chara.eKind.Baby && player.SelectedCharacter.m_SkinIndex == 2)
+                {
+                    messages.Add(new Message("babyrobo", player.Name, packet.goaltype, stageName, Convert.ToBoolean(packet.switchStorage), Convert.ToBoolean(packet.fastForward), Convert.ToBoolean(packet.bonusGoal), Convert.ToBoolean(packet.banana50), Convert.ToBoolean(packet.banana100), Convert.ToBoolean(packet.banana120), Convert.ToBoolean(packet.perfectClear), assetBundle, BingoLog));
+                }
+                else
+                {
+                    messages.Add(new Message(player.SelectedCharacter.m_CharaKind.ToString(), player.Name, packet.goaltype, stageName, Convert.ToBoolean(packet.switchStorage), Convert.ToBoolean(packet.fastForward), Convert.ToBoolean(packet.bonusGoal), Convert.ToBoolean(packet.banana50), Convert.ToBoolean(packet.banana100), Convert.ToBoolean(packet.banana120), Convert.ToBoolean(packet.perfectClear), assetBundle, BingoLog));
+                }
             };
             api.DoStateUpdate += (s, e) =>
             {
@@ -243,8 +251,6 @@ namespace BingoUI
         public static MainGameUI.eBananaCounterKind eBananaCounter = MainGameUI.eBananaCounterKind.None;
         public static AssetBundle assetBundle;
         public static Transform messageList;
-        // Have perfect count separate
-        // If mainGameStage.m_IsOpenResultMenu == true && mainGameStage.isPerfect
 
         // Console Colors:
         // Blue - Blue Goal
@@ -252,20 +258,24 @@ namespace BingoUI
         // Red - Red Goal
         // Yellow - Perfect
         // Gray - Bonus Fallout
-        // Purple - Bonus Goal
-
-        // Don't have entering modes - adds game knowledge
-
-        // Bonus Logic - FALLOUT - GOAL - GOALKIND.INVALID
-        // If MainGameStage.state = eState.FALLOUT && MainGameStage.BananaCounterKind = eBananaCounterKind.Bonus
-
-        public static void OnModStart()
-        {
-            
-        }
 
         public static void OnModUpdate()
         {
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                if (Input.GetKeyDown(KeyCode.H))
+                {
+                    screenSide = !screenSide;
+                    if (screenSide)
+                    {
+                        Counters.GetComponent<RectTransform>().localPosition = new Vector3(Counters.GetComponent<RectTransform>().localPosition.x - 1750, Counters.GetComponent<RectTransform>().localPosition.y, Counters.GetComponent<RectTransform>().localPosition.z);
+                    }
+                    else
+                    {
+                        Counters.GetComponent<RectTransform>().localPosition = new Vector3(Counters.GetComponent<RectTransform>().localPosition.x + 1750, Counters.GetComponent<RectTransform>().localPosition.y, Counters.GetComponent<RectTransform>().localPosition.z);
+                    }
+                }
+            }
             if (assetBundle == null)
             {
                 string DLLFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -532,7 +542,14 @@ namespace BingoUI
                         dataToSend.banana120 = playerPacketData.banana120;
                         dataToSend.perfectClear = playerPacketData.perfectClear;
                         if (!showLog) return;
-                        messages.Add(new Message(player.charaKind.ToString(), SteamManager.GetFriendsHandler().GetPersonaName(), playerPacketData.goaltype, stageName, Convert.ToBoolean(playerPacketData.switchStorage), Convert.ToBoolean(playerPacketData.fastForward), Convert.ToBoolean(playerPacketData.bonusGoal), Convert.ToBoolean(playerPacketData.banana50), Convert.ToBoolean(playerPacketData.banana100), Convert.ToBoolean(playerPacketData.banana120), Convert.ToBoolean(playerPacketData.perfectClear), assetBundle, BingoLog));
+                        if (player.charaKind == Chara.eKind.Baby && player.charaSkinIndex == 2)
+                        {
+                            messages.Add(new Message("babyrobo", SteamManager.GetFriendsHandler().GetPersonaName(), playerPacketData.goaltype, stageName, Convert.ToBoolean(playerPacketData.switchStorage), Convert.ToBoolean(playerPacketData.fastForward), Convert.ToBoolean(playerPacketData.bonusGoal), Convert.ToBoolean(playerPacketData.banana50), Convert.ToBoolean(playerPacketData.banana100), Convert.ToBoolean(playerPacketData.banana120), Convert.ToBoolean(playerPacketData.perfectClear), assetBundle, BingoLog));
+                        }
+                        else
+                        {
+                            messages.Add(new Message(player.charaKind.ToString(), SteamManager.GetFriendsHandler().GetPersonaName(), playerPacketData.goaltype, stageName, Convert.ToBoolean(playerPacketData.switchStorage), Convert.ToBoolean(playerPacketData.fastForward), Convert.ToBoolean(playerPacketData.bonusGoal), Convert.ToBoolean(playerPacketData.banana50), Convert.ToBoolean(playerPacketData.banana100), Convert.ToBoolean(playerPacketData.banana120), Convert.ToBoolean(playerPacketData.perfectClear), assetBundle, BingoLog));
+                        }
                     }
                 }
             }

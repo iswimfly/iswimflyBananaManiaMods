@@ -90,11 +90,10 @@ namespace ILBattleTimer
                     // Get the Goal Time
                     if (mainGameController.GetComponent<MainGameStage>().m_State == MainGameStage.State.GOAL)
                     {
-                        if (bestTime > mainGameController.GetComponent<MainGameStage>().m_GameTimer) return;
                         // Check if it's a Perfect IL Battle
                         if (PerfectBattle == true)
                         {
-                            if (GameObject.FindObjectOfType<MainGameStage>().isPerfect == true)
+                            if (GameObject.FindObjectOfType<MainGameStage>().isPerfect == true && bestTime < mainGameController.GetComponent<MainGameStage>().m_GameTimer)
                             {
                                 bestTime = mainGameController.GetComponent<MainGameStage>().m_GameTimer;
 
@@ -103,7 +102,10 @@ namespace ILBattleTimer
                         // If it's not a Perfect IL Battle just get the time
                         else
                         {
-                            bestTime = mainGameController.GetComponent<MainGameStage>().m_GameTimer;
+                            if (bestTime < mainGameController.GetComponent<MainGameStage>().m_GameTimer)
+                            {
+                                bestTime = mainGameController.GetComponent<MainGameStage>().m_GameTimer;
+                            }
                         }
 
                     }
@@ -116,6 +118,7 @@ namespace ILBattleTimer
                     // End the battle when time is up, accounting for Buzzer Beater
                     if (minutes * 3600 + frameCount > ILBattleTotalTime && (minutes * 3600 + frameCount) - CurrentStateFrame > ILBattleTotalTime)
                     {
+                        NoRounding = Math.Truncate((bestTime / 60) * 100) / 100;
                         ILBattleActive = false;
                         ImLazy1.GetComponent<RubyTextMeshProUGUI>().text = "Final Time:";
                         ImLazy2.GetComponent<RubyTextMeshProUGUI>().text = NoRounding.ToString("00.00");

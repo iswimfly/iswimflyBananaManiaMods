@@ -1,0 +1,11 @@
+{
+    "Title": "Online IL Battle Timer",
+    "Id": "iswimfly.OnlineILBattleTimer",
+    "DLLFile": "OnlineILBattleTimer.dll",
+    "Description": "A mod that adds a stage completion log for Banana Mania Bingo, as well as collective goal counters! REQUIRES BMONLINE TO FUNCTION!!! Press F10 to Toggle UI and F9 to Clear Data.",
+    "Version": "1.1",
+    "Date": "7/21/2022",
+    "Author": "iswimfly",
+    "AuthorURL": "twitch.tv/iswimfly556",
+    "UpdateServer": ""
+  }
