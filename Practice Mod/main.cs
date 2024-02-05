@@ -1,36 +1,40 @@
 ﻿using UnityEngine;
-using Flash2;
 using Framework.UI;
+using Flash2;
+using System;
 
 namespace PracticeMod
 {
 
     public class Main : MonoBehaviour
     {
-        private static GameObject maingame = null;
-        private static GameObject pausemenu = null;
-        private static GameObject player = null;
-        private static GameObject playercamera = null;
+        private static AppInput.state_t mgState_t = null;
+
         public static void OnModUpdate()
         {
-            if (MainGame.Exists != true) return;
-
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            // If the AppInput slot 0 is active, grab it and store it for later.
+            if (AppInput.ActiveState(0) != null && mgState_t == null)
             {
-                playercamera = GameObject.Find("ObjRoot").transform.GetChild(5).gameObject;
-                if (playercamera.name == "GameCameraShimmer(Clone)")
-                {
-                    playercamera = GameObject.Find("CameraMain");
-                }
-                pausemenu = FindObjectOfType<Pause>().gameObject;
-                player = GameObject.Find("Player(Clone)");
-                maingame = FindObjectOfType<MainGame>().gameObject;
+                mgState_t = AppInput.ActiveState(0);
+                Console.WriteLine("AppInput Found! P1 Grabbed.");
+            }
 
-                if (playercamera.GetComponent<Camera>().isActiveAndEnabled && pausemenu.GetComponent<Pause>().currentPlayerIndex != 0 && maingame != null && player != null)
+            if (MainGame.Exists)
+            {
+                // Default keybinds for quick retry.
+                if (mgState_t.m_buttonMaskDown == Def.Button.Y || Input.GetKeyDown(KeyCode.X))
                 {
-                    maingame.transform.GetComponent<MainGame>().m_isRequestRecreateStage = true;
+                    // If the game is in an unpausable state, do not retry
+                    if (MainGame.mainGameStage.check_pausable() == false || MainGame.gameKind == MainGameDef.eGameKind.Practice) return;
+                    MainGame.NotifyEvent(MainGame.eEvent.Retry);
+                }
+                if (mgState_t.m_buttonMaskDown == Def.Button.X || Input.GetKeyDown(KeyCode.LeftControl))
+                {
+                    if (MainGame.mainGameStage.check_pausable() == false) return;
+                    FindObjectOfType<MainGame>().m_isRequestRecreateStage = true;
                 }
             }
         }
     }
 }
+
