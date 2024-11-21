@@ -1,6 +1,6 @@
 # iswimflyBananaManiaMods
 
-This repository contains all of my mods (compiled), as well as the main.cs file in each of them.
+This repository contains all of my mods (compiled), as well as any other potentially necessary files.
 
 If any of the mods get more complex, I will add the other C# files.
 
